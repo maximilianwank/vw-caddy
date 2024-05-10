@@ -76,7 +76,7 @@ Resources:
                       DOMAIN: "<yourdomain>"
                       EMAIL: "<youremail>"
                       LOG_FILE: /srv/caddy/logs/access.log
-              mode: "000744"
+              mode: "000644"
               owner: "root"
               group: "root"
           services:
