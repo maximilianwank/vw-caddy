@@ -35,3 +35,8 @@ Resources:
             yum:
               htop: []
               docker: []
+          services:
+            systemd:
+              docker:
+                enabled: 'true'
+                ensureRunning: 'true'
