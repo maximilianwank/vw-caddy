@@ -50,6 +50,25 @@ Resources:
               mode: "000744"
               owner: "root"
               group: "root"
+            /srv/caddy/Caddyfile:
+              content: |
+                {$DOMAIN}:443 {
+                  log {
+                    output file {$LOG_FILE} {
+                      roll_size 10MB
+                      roll_keep 10
+                    }
+                  }
+                  
+                  tls {$EMAIL}
+                  reverse_proxy /notifications/hub vaultwarden:3012
+                  reverse_proxy vaultwarden:80 {
+                    header_up X-Real-IP {remote_host}
+                  }
+                }
+              mode: "000744"
+              owner: "root"
+              group: "root"
           commands:
             01_install_docker_compose:
               command: "/tmp/install_docker_compose.sh"
