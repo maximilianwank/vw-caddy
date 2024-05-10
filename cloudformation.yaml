@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: 'AWS CloudFormation Sample Template'
+Resources:
+  VwCaddyInstance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      InstanceType: t3a.nano
+      ImageId: ami-098c93bd9d119c051
+      SecurityGroupIds:
+        - sg-090b540c2f51d024d
+      BlockDeviceMappings:
+        - DeviceName: /dev/sda1
+          Ebs:
+            VolumeSize: 4
+      KeyName: dev-mw-ec2
+      UserData: !Base64
+        'Fn::Join':
+          - ''
+          - - |
+              #!/bin/bash -xe
+            - |
+              yum install -y aws-cfn-bootstrap
+            - |
+              # Install the files and packages from the metadata
+            - '/opt/aws/bin/cfn-init -v '
+            - '         --stack '
+            - !Ref AWS::StackName
+            - '         --resource VwCaddyInstance '
+            - '         --region '
+            - !Ref AWS::Region
+    Metadata:
+      AWS::CloudFormation::Init:
+        config:
+          packages:
+            yum:
+              htop: []
+              docker: []
