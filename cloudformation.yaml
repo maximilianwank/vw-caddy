@@ -7,7 +7,7 @@ Resources:
       InstanceType: t3a.nano
       ImageId: ami-098c93bd9d119c051
       SecurityGroupIds:
-        - sg-090b540c2f51d024d
+        - sg-090b540c2f51d024d  # ToDo: Generate a new security group
       BlockDeviceMappings:
         - DeviceName: /dev/sda1
           Ebs:
@@ -35,6 +35,18 @@ Resources:
             yum:
               htop: []
               docker: []
+          files:
+            /tmp/install_docker_compose.sh:
+              content: |
+                #!/bin/bash
+                # Install for all users
+                mkdir -p /usr/local/lib/docker/cli-plugins
+                curl -sL https://github.com/docker/compose/releases/latest/download/docker-compose-linux-$(uname -m) \
+                  -o /usr/local/lib/docker/cli-plugins/docker-compose
+                
+                # Set ownership to root and make executable
+                chown root:root /usr/local/lib/docker/cli-plugins/docker-compose
+                chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
           services:
             systemd:
               docker:
