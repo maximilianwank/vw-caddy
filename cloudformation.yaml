@@ -47,6 +47,9 @@ Resources:
                 # Set ownership to root and make executable
                 chown root:root /usr/local/lib/docker/cli-plugins/docker-compose
                 chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+              mode: "000744"
+              owner: "root"
+              group: "root"
           services:
             systemd:
               docker:
