@@ -6,5 +6,6 @@ This is work in progress. Use at your own risk. I am not responsible for any dam
 
 ## Acknowledgements
 * [Daniel García](https://github.com/dani-garcia) for [vaultwarden](https://github.com/dani-garcia/vaultwarden)
+* [Matt Holt](https://github.com/mholt) for [caddy](https://github.com/caddyserver/caddy)
 * [Helge Klein](https://helgeklein.com/) for his article [Vaultwarden Setup Guide With Automatic HTTPS](https://helgeklein.com/blog/vaultwarden-setup-guide-with-automatic-https/)
 * [Thomas Schick](https://github.com/ginmaster) for his [installation scripts](https://gist.github.com/ginmaster/c6d11697c4fa67442889f379380ba6c0)
