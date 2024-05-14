@@ -8,6 +8,7 @@ Resources:
       ImageId: ami-098c93bd9d119c051
       SecurityGroupIds:
         - sg-090b540c2f51d024d  # ToDo: Generate a new security group
+        - !Ref HttpHttpsSecurityGroup
       BlockDeviceMappings:
         - DeviceName: /dev/sda1
           Ebs:
@@ -70,6 +71,19 @@ Resources:
               docker:
                 enabled: "true"
                 ensureRunning: "true"
+  HttpHttpsSecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupDescription: "Enable HTTP and HTTPS access"
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          FromPort: 80
+          ToPort: 80
+          IpProtocol: TCP
+        - CidrIp: 0.0.0.0/0
+          FromPort: 443
+          ToPort: 443
+          IpProtocol: TCP
 Outputs:
   InstanceId:
     Description: "InstanceId of the newly created EC2 instance"

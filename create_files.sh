@@ -8,4 +8,6 @@ sudo mv Caddyfile /srv/caddy/Caddyfile
 # Download the files
 curl -O https://raw.githubusercontent.com/maximilianwank/vw-caddy/deploy/docker-compose.yaml
 mkdir /home/ec2-user/vw_caddy
+chown ec2-user:ec2-user /home/ec2-user/vw_caddy
 mv docker-compose.yaml /home/ec2-user/vw_caddy/docker-compose.yaml
+chown ec2-user:ec2-user /home/ec2-user/vw_caddy/docker-compose.yaml
