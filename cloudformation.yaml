@@ -64,9 +64,22 @@ Resources:
             01_install_docker_compose:
               command: "/tmp/install_docker_compose.sh"
             02_create_files:
-              command: "/tmp/load_create_files.sh ec2-user"
+              command: "/tmp/load_create_files.sh"
           services:
             systemd:
               docker:
                 enabled: "true"
                 ensureRunning: "true"
+Outputs:
+  InstanceId:
+    Description: "InstanceId of the newly created EC2 instance"
+    Value: !Ref VwCaddyInstance
+  AZ:
+    Description: "Availability Zone of the newly created EC2 instance"
+    Value: !GetAtt VwCaddyInstance.AvailabilityZone
+  PublicDNS:
+    Description: "Public DNSName of the newly created EC2 instance"
+    Value: !GetAtt VwCaddyInstance.PublicDnsName
+  PublicIP:
+    Description: "Public IP address of the newly created EC2 instance"
+    Value: !GetAtt VwCaddyInstance.PublicIp
