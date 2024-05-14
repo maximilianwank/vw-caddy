@@ -7,6 +7,8 @@ else
   user=$1
 fi
 
+echo "create_files.sh user: $user" > /tmp/create_files.log
+
 # Download and move Caddyfile
 curl -O https://raw.githubusercontent.com/maximilianwank/vw-caddy/deploy/Caddyfile
 sudo mkdir /srv/caddy
