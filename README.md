@@ -13,3 +13,10 @@ This is work in progress. Use at your own risk. I am not responsible for any dam
 * [Matt Holt](https://github.com/mholt) for [caddy](https://github.com/caddyserver/caddy)
 * [Helge Klein](https://helgeklein.com/) for his article [Vaultwarden Setup Guide With Automatic HTTPS](https://helgeklein.com/blog/vaultwarden-setup-guide-with-automatic-https/)
 * [Thomas Schick](https://github.com/ginmaster) for his [installation scripts](https://gist.github.com/ginmaster/c6d11697c4fa67442889f379380ba6c0)
+
+## :gear: Setup
+1. Run the Cloudformation template `cloudformation.yaml` to create the EC2 instance.
+2. SSH into the instance.
+3. Create an admin token via `echo -n "MySecretPassword" | argon2 "$(openssl rand -base64 32)" -e -id -k 65540 -t 3 -p 4 | sed 's#\$#\$\$#g'`
+4. Add the result to `~/vw_caddy/docker-compose.yml` in the `environment` section.
+5. Set admins, domain and e-mail in `~/vw_caddy/docker-compose.yml`.

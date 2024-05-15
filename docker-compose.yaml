@@ -6,6 +6,10 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /srv/vaultwarden:/data
+    environment:
+      DOMAIN: "<yourdomain>"
+      ORG_CREATION_USERS: "<admin1>,<admin2>"
+      ADMIN_TOKEN: "<yourdomain>"
 
   caddy:
     image: caddy:2
