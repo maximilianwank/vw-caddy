@@ -62,11 +62,41 @@ Resources:
               mode: "000744"
               owner: "root"
               group: "root"
+            /tmp/install_fail2ban.sh:
+              content: |
+                #!/bin/bash
+                # Load fail2ban from source
+                curl -L -O https://github.com/fail2ban/fail2ban/archive/refs/heads/master.zip
+                
+                # Unzip, build and install
+                unzip master.zip
+                cd fail2ban-master
+                sudo python3 setup.py build
+                sudo python3 setup.py install
+                
+                # Copy the service file and enable it
+                sudo cp ./build/fail2ban.service /etc/systemd/system/fail2ban.service
+                
+                # Uncomment the Environment line since it leads to errors
+                sudo sed -i 's/Environment="PYTHONNOUSERSITE=1"/# Environment="PYTHONNOUSERSITE=1"/g' /etc/systemd/system/fail2ban.service
+                
+                # Enable the service
+                sudo systemctl enable fail2ban
+                
+                # Remove the source files
+                cd ..
+                rm -rf fail2ban-master
+                rm master.zip
+              mode: "000744"
+              owner: "root"
+              group: "root"
           commands:
             01_install_docker_compose:
               command: "/tmp/install_docker_compose.sh"
             02_create_files:
               command: "/tmp/load_create_files.sh"
+            03_install_fail2ban:
+              command: "/tmp/install_fail2ban.sh"
           services:
             systemd:
               docker:
