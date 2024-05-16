@@ -82,6 +82,7 @@ Resources:
                 
                 # Enable the service
                 sudo systemctl enable fail2ban
+                sudo systemctl start fail2ban
                 
                 # Remove the source files
                 cd ..
