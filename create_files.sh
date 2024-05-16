@@ -1,13 +1,15 @@
 #!/bin/bash
 
-# Download and move Caddyfile
-curl -O https://raw.githubusercontent.com/maximilianwank/vw-caddy/main/Caddyfile
+# Caddyfile
+curl -O https://raw.githubusercontent.com/maximilianwank/vw-caddy/deploy/configs/Caddyfile
 sudo mkdir /srv/caddy
 sudo mv Caddyfile /srv/caddy/Caddyfile
 chown -R ec2-user:ec2-user /home/ec2-user
 
-# Download the files
-curl -O https://raw.githubusercontent.com/maximilianwank/vw-caddy/main/docker-compose.yaml
+# docker-compose.yaml
+curl -O https://raw.githubusercontent.com/maximilianwank/vw-caddy/deploy/configs/docker-compose.yaml
 mkdir /home/ec2-user/vw_caddy
 mv docker-compose.yaml /home/ec2-user/vw_caddy/docker-compose.yaml
 chown -R ec2-user:ec2-user /home/ec2-user/vw_caddy
+
+# fail2ban filter

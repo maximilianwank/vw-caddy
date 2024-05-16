@@ -52,16 +52,6 @@ Resources:
               mode: "000744"
               owner: "root"
               group: "root"
-            /tmp/load_create_files.sh:
-              content: |
-                #!/bin/bash
-                curl -O https://raw.githubusercontent.com/maximilianwank/vw-caddy/deploy/create_files.sh
-                chmod +x create_files.sh
-                ./create_files.sh
-                rm create_files.sh
-              mode: "000744"
-              owner: "root"
-              group: "root"
             /tmp/install_fail2ban.sh:
               content: |
                 #!/bin/bash
@@ -91,13 +81,23 @@ Resources:
               mode: "000744"
               owner: "root"
               group: "root"
+            /tmp/load_create_files.sh:
+              content: |
+                #!/bin/bash
+                curl -O https://raw.githubusercontent.com/maximilianwank/vw-caddy/deploy/create_files.sh
+                chmod +x create_files.sh
+                ./create_files.sh
+                rm create_files.sh
+              mode: "000744"
+              owner: "root"
+              group: "root"
           commands:
             01_install_docker_compose:
               command: "/tmp/install_docker_compose.sh"
-            02_create_files:
-              command: "/tmp/load_create_files.sh"
-            03_install_fail2ban:
+            02_install_fail2ban:
               command: "/tmp/install_fail2ban.sh"
+            03_create_files:
+              command: "/tmp/load_create_files.sh"
           services:
             systemd:
               docker:
