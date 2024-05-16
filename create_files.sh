@@ -13,3 +13,5 @@ mv docker-compose.yaml /home/ec2-user/vw_caddy/docker-compose.yaml
 chown -R ec2-user:ec2-user /home/ec2-user/vw_caddy
 
 # fail2ban filter
+curl -O https://raw.githubusercontent.com/maximilianwank/vw-caddy/deploy/configs/filter_vaultwarden.local
+curl -O https://raw.githubusercontent.com/maximilianwank/vw-caddy/deploy/configs/jail_vaultwarden.local
