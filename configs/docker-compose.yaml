@@ -7,9 +7,10 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /srv/vaultwarden:/data
     environment:
+      ADMIN_TOKEN: "<youradmintoken>"
       DOMAIN: "<yourdomain>"
       ORG_CREATION_USERS: "<admin1>,<admin2>"
-      ADMIN_TOKEN: "<yourdomain>"
+      LOG_FILE: "/data/vaultwarden.log"
 
   caddy:
     image: caddy:2
