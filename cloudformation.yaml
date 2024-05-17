@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: "AWS CloudFormation Sample Template"
+Description: "Deploy a vaultwarden server with Caddy as a reverse proxy"
 Resources:
   VwCaddyInstance:
     Type: "AWS::EC2::Instance"
