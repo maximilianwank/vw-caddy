@@ -8,8 +8,8 @@ services:
       - /srv/vaultwarden:/data
     environment:
       ADMIN_TOKEN: "<youradmintoken>"
-      DOMAIN: "<yourdomain>"
-      ORG_CREATION_USERS: "<admin1>,<admin2>"
+      DOMAIN: "https://<yourdomain>"
+      ORG_CREATION_USERS: "user@example.com"
       LOG_FILE: "/data/vaultwarden.log"
 
   caddy:
@@ -25,6 +25,6 @@ services:
       - /srv/caddy/data:/data
       - /srv/caddy/logs:/logs
     environment:
-      DOMAIN: "<yourdomain>"
-      EMAIL: "<youremail>"
+      DOMAIN: "https://<yourdomain>"
+      EMAIL: "user@example.com"
       LOG_FILE: /srv/caddy/logs/access.log
