@@ -21,3 +21,6 @@ chown ec2-user:ec2-user /etc/fail2ban/filter.d/vaultwarden.local
 curl -O https://raw.githubusercontent.com/maximilianwank/vw-caddy/deploy/configs/jail_vaultwarden.local
 mv jail_vaultwarden.local /etc/fail2ban/jail.d/vaultwarden.local
 chown ec2-user:ec2-user /etc/fail2ban/jail.d/vaultwarden.local
+
+# restart fail2ban
+sudo systemctl restart fail2ban
