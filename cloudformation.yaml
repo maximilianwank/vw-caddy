@@ -37,7 +37,7 @@ Resources:
               argon2: []
               docker: []
               htop: []
-              nftables: []
+              # nftables: []
           files:
             /tmp/install_docker_compose.sh:
               content: |
