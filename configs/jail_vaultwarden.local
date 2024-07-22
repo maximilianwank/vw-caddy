@@ -1,8 +1,8 @@
 [vaultwarden]
 enabled = true
-port = http,https
+port = 80,443
 filter = vaultwarden
-banaction = %(banaction_allports)s
+banaction = iptables[type=multiport]
 logpath = /srv/vaultwarden/vaultwarden.log
 maxretry = 2 ; ToDo: Set this back to 5
 bantime = 15 ; ToDo: Set this back to 14400
