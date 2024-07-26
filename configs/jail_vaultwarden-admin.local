@@ -2,7 +2,7 @@
 enabled = true
 filter = vaultwarden-admin
 banaction = iptables
-logpath = /path/to/vaultwarden.log
+logpath = /srv/vaultwarden/vaultwarden.log
 maxretry = 2 ; ToDo: Set this back to 5
 bantime = 60 ; ToDo: Set this back to 14400
 findtime = 14400
